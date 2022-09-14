@@ -20,6 +20,11 @@ klientas gali peržiūrėti jam skirtos siuntos būseną.
 - Administratoriaus sukurtas naudotojas **Kurjeris** gali priskirti siuntą pristatymo automobiliui, keisti siuntos būseną.
 - Išoriškai pridedamas naudotojas **Administratorius** gali valdyti (CRUD) automobilius, kurjerius ir siuntas.
 
+Toliau pateikiama sistemos esybių ryšių diagrama. CRUD metodai kuriami Courier (Kurjeris), Package (Siunta),
+DeliveryVehicle (Pristatymo automobilis) esybėms.
+
+![Esybių ryšių diagrama](https://cdn.discordapp.com/attachments/890247339648909322/1019523276705382470/unknown.png "Esybių ryšių diagrama")
+
 ## Sistemos architektūra
 
 Sistemos sudedamosios dalys:
@@ -30,4 +35,4 @@ Sistemos sudedamosios dalys:
 Toliau pavaizduota sistemos diegimo diagrama. Sistemos talpinimui naudojamas Azure serveris. Visos sistemos
 dalys talpinamos tame pačiame serveryje.
 
-![System deployment diagram](https://cdn.discordapp.com/attachments/890247339648909322/1019520678443094127/Sait_Deployment.png "System deployment diagram")
+![Sistemos diegimo diagrama](https://cdn.discordapp.com/attachments/890247339648909322/1019520678443094127/Sait_Deployment.png "Sistemos diegimo diagrama")
