@@ -16,9 +16,24 @@ klientas gali peržiūrėti jam skirtos siuntos būseną.
 
 ### Funkciniai reikalavimai
 
-- Registruotas naudotojas **Klientas** gali pateikęs siuntos numerį peržiūrėti jos būseną.
-- Administratoriaus sukurtas naudotojas **Kurjeris** gali sukurti pristatymą, priskirti pristatymams siuntas, keisti siuntos būseną.
-- Išoriškai pridedamas naudotojas **Administratorius** gali valdyti (CRUD) automobilius, kurjerius ir siuntas.
+#### Registruotas naudotojas **Klientas** gali
+
+- Pateikęs siuntos numerį peržiūrėti jos būseną.
+
+#### Administratoriaus sukurtas naudotojas **Kurjeris** gali
+
+- Sukurti pristatymą (priskirtą sau), jį redaguoti;
+- Priskirti savo pristatymui siuntą;
+- Keisti sau priskirtos siuntos būseną.
+
+#### Išoriškai pridedamas naudotojas **Administratorius** gali
+
+- valdyti (peržiūrėti, pridėti, redaguoti, šalinti) automobilius;
+- valdyti (peržiūrėti, pridėti, redaguoti, šalinti) siuntas;
+- valdyti (peržiūrėti, pridėti, redaguoti, šalinti) pristatymus;
+- valdyti (peržiūrėti, pridėti, redaguoti, šalinti) kurjerius.
+
+### Sistemos struktūra
 
 Toliau pateikiama sistemos esybių ryšių diagrama. CRUD metodai kuriami Delivery (pristatymas), Package (Siunta),
 DeliveryVehicle (Pristatymo automobilis) esybėms.
