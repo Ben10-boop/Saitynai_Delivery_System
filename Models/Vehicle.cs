@@ -13,6 +13,6 @@ namespace Saitynai_Delivery_System1.Models
         public User? Driver { get; set; }
         public int ? DriverId { get; set; }
         [JsonIgnore]
-        public List<Package>? AssignedPackages { get; set; }
+        public List<Delivery>? Deliveries { get; set; }
     }
 }

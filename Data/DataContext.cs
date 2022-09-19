@@ -13,5 +13,6 @@ namespace Saitynai_Delivery_System1.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Package> Packages { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
     }
 }

@@ -11,10 +11,10 @@ namespace Saitynai_Delivery_System1.Models
         [JsonIgnore]
         public User Recipient { get; set; }
         public int RecipientId { get; set; }
-        [JsonIgnore]
-        public Vehicle? DeliveryVehicle { get; set; }
-        public int? DeliveryVehicleId { get; set; }
         //In warehouse; Being delivered; Delivered;
+        [JsonIgnore]
+        public Delivery? AssignedToDelivery { get; set; }
+        public int? AssignedToDeliveryId { get; set; }
         public string State { get; set; } = "In warehouse";
     }
 }

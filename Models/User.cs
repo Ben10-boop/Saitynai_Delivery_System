@@ -22,6 +22,8 @@ namespace Saitynai_Delivery_System1.Models
         public double? Wage { get; set; }
         [JsonIgnore]
         public Vehicle? DeliveryVehicle { get; set; }
+        [JsonIgnore]
+        public List<Delivery>? Deliveries { get; set; }
 
     }
 }

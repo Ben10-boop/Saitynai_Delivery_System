@@ -57,9 +57,10 @@ namespace Saitynai_Delivery_System1.Controllers
         public async Task<IActionResult> PutPackage(int id, PackageDto request)
         {
             var oldPackage = await _context.Packages.FindAsync(id);
-            if (oldPackage == null) return BadRequest();
-            var updatedDeliveryVehicle = await _context.Vehicles.FindAsync(request.DeliveryVehicleId);
-            if (updatedDeliveryVehicle == null) return BadRequest();
+            if (oldPackage == null) return BadRequest("Couldn't find Package with given ID");
+            
+            var updatedDelivery = await _context.Deliveries.FindAsync(request.AssignedToDeliveryId);
+            if (updatedDelivery == null) return BadRequest("Couldn't find Delivery with given ID");
 
             if (_context.Packages == null)
             {
@@ -69,8 +70,8 @@ namespace Saitynai_Delivery_System1.Controllers
             oldPackage.Size = request.Size;
             oldPackage.Weight = request.Weight;
             oldPackage.Address = request.Address;
-            oldPackage.DeliveryVehicle = updatedDeliveryVehicle;
-            oldPackage.DeliveryVehicleId = updatedDeliveryVehicle.Id;
+            oldPackage.AssignedToDelivery = updatedDelivery;
+            oldPackage.AssignedToDeliveryId = updatedDelivery.Id;
             oldPackage.State = request.State;
             await _context.SaveChangesAsync();
 
