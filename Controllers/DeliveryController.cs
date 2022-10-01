@@ -60,22 +60,21 @@ namespace Saitynai_Delivery_System1.Controllers
             if (oldDelivery == null) return BadRequest("Can't find the Delivery with given ID");
             
             var updatedDeliveryVehicle = await _context.Vehicles.FindAsync(request.DeliveryVehicleId);
-            if (updatedDeliveryVehicle == null) return BadRequest("Can't find the Vehicle with given ID");
-
-            var updatedCourier = await _context.Users.FindAsync(request.DeliveryCourierId);
-            if (updatedCourier == null || updatedCourier.Role != "Courier") return BadRequest("Can't find the Courier with given ID");
-
-            if (_context.Packages == null)
+            if (updatedDeliveryVehicle != null) 
             {
-                return Problem("Entity set 'DataContext.Packages'  is null.");
+                oldDelivery.DeliveryVehicle = updatedDeliveryVehicle;
+                oldDelivery.DeliveryVehicleId = updatedDeliveryVehicle.Id;
             }
 
-            oldDelivery.Route = request.Route;
-            oldDelivery.DeliveryDate = request.DeliveryDate;
-            oldDelivery.DeliveryVehicle = updatedDeliveryVehicle;
-            oldDelivery.DeliveryVehicleId = updatedDeliveryVehicle.Id;
-            oldDelivery.DeliveryCourier = updatedCourier;
-            oldDelivery.DeliveryCourierId = updatedCourier.Id;
+            var updatedCourier = await _context.Users.FindAsync(request.DeliveryCourierId);
+            if (updatedCourier != null && updatedCourier.Role == "Courier")
+            {
+                oldDelivery.DeliveryCourier = updatedCourier;
+                oldDelivery.DeliveryCourierId = updatedCourier.Id;
+            }
+
+            if (request.Route != String.Empty) oldDelivery.Route = request.Route;
+            if (request.DeliveryDate != null) oldDelivery.DeliveryDate = (DateTime)request.DeliveryDate;
             await _context.SaveChangesAsync();
 
             return Ok(oldDelivery);
@@ -97,10 +96,14 @@ namespace Saitynai_Delivery_System1.Controllers
             var selectedCourier = await _context.Users.FindAsync(request.DeliveryCourierId);
             if (selectedCourier == null || selectedCourier.Role != "Courier") return BadRequest("Can't find the Courier with given ID");
 
+            DateTime newDate = DateTime.Now;
+            if (request.DeliveryDate != null)
+                newDate = (DateTime)request.DeliveryDate;
+
             Delivery newDelivery = new()
             {
                 Route = request.Route,
-                DeliveryDate = request.DeliveryDate,
+                DeliveryDate = newDate,
                 DeliveryVehicle = selectedDeliveryVehicle,
                 DeliveryVehicleId = request.DeliveryVehicleId,
                 DeliveryCourier = selectedCourier,

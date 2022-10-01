@@ -60,19 +60,16 @@ namespace Saitynai_Delivery_System1.Controllers
             if (oldPackage == null) return BadRequest("Couldn't find Package with given ID");
             
             var updatedDelivery = await _context.Deliveries.FindAsync(request.AssignedToDeliveryId);
-            if (updatedDelivery == null) return BadRequest("Couldn't find Delivery with given ID");
-
-            if (_context.Packages == null)
+            if (updatedDelivery != null)
             {
-                return Problem("Entity set 'DataContext.Packages'  is null.");
+                oldPackage.AssignedToDelivery = updatedDelivery;
+                oldPackage.AssignedToDeliveryId = updatedDelivery.Id;
             }
 
-            oldPackage.Size = request.Size;
-            oldPackage.Weight = request.Weight;
-            oldPackage.Address = request.Address;
-            oldPackage.AssignedToDelivery = updatedDelivery;
-            oldPackage.AssignedToDeliveryId = updatedDelivery.Id;
-            oldPackage.State = request.State;
+            if (request.Size != String.Empty) oldPackage.Size = request.Size;
+            if (request.Weight != 0) oldPackage.Weight = request.Weight;
+            if (request.Address != String.Empty) oldPackage.Address = request.Address;
+            if (request.State != String.Empty) oldPackage.State = request.State;
             await _context.SaveChangesAsync();
 
             return Ok(oldPackage);
@@ -92,12 +89,12 @@ namespace Saitynai_Delivery_System1.Controllers
             }
             Package newPackage = new Package
             {
-                Size = request.Size,
+                Size = request.Size.ToLower(),
                 Weight = request.Weight,
                 Address = request.Address,
                 Recipient = recipient,
                 RecipientId = request.RecipientId,
-                State = request.State
+                State = request.State.ToLower()
 
             };
             _context.Packages.Add(newPackage);

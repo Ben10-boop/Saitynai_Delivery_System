@@ -15,6 +15,6 @@ namespace Saitynai_Delivery_System1.Models
         [JsonIgnore]
         public Delivery? AssignedToDelivery { get; set; }
         public int? AssignedToDeliveryId { get; set; }
-        public string State { get; set; } = "In warehouse";
+        public string State { get; set; } = "in warehouse";
     }
 }

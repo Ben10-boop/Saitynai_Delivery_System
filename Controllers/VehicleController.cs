@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Pkcs;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -59,14 +60,16 @@ namespace Saitynai_Delivery_System1.Controllers
             var oldVehicle = await _context.Vehicles.FindAsync(id);
             if (oldVehicle == null) return BadRequest();
             var updatedDriver = await _context.Users.FindAsync(request.DriverId);
-            if (updatedDriver == null) return BadRequest();
-
-            oldVehicle.RegNumbers = request.RegNumbers;
-            oldVehicle.Brand = request.Brand;
-            oldVehicle.Model = request.Model;
-            oldVehicle.MaxPayload = request.MaxPayload;
-            oldVehicle.Driver = updatedDriver;
-            oldVehicle.DriverId = updatedDriver.Id;
+            //if (updatedDriver == null) return BadRequest();
+            if (updatedDriver != null)
+            {
+                oldVehicle.Driver = updatedDriver;
+                oldVehicle.DriverId = updatedDriver.Id;
+            }
+            if (request.RegNumbers != String.Empty) oldVehicle.RegNumbers = request.RegNumbers;
+            if (request.Brand != String.Empty) oldVehicle.Brand = request.Brand;
+            if (request.Model != String.Empty) oldVehicle.Model = request.Model;
+            if (request.MaxPayload != 0) oldVehicle.MaxPayload = request.MaxPayload;
 
             await _context.SaveChangesAsync();
 
@@ -113,6 +116,36 @@ namespace Saitynai_Delivery_System1.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpGet("Packages/{id}")]
+        public async Task<ActionResult<IEnumerable<Package>>> GetVehiclePackages(int id)
+        {
+            if (_context.Vehicles == null)
+            {
+                return NotFound();
+            }
+            var vehicle = await _context.Vehicles.FindAsync(id);
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
+
+            var vehicleDeliveries = _context.Deliveries.Where(del => del.DeliveryVehicleId == id).ToList();
+
+            List<Package> vehiclePackages = new List<Package>();
+            foreach (Delivery deliv in vehicleDeliveries)
+            {
+                foreach (Package pkg in _context.Packages)
+                {
+                    if(pkg.AssignedToDeliveryId == deliv.Id)
+                    {
+                        vehiclePackages.Add(pkg);
+                    }
+                }
+            }
+
+            return vehiclePackages;
         }
     }
 }
