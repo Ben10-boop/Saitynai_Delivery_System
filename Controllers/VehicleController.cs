@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography.Pkcs;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +26,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // GET: api/Vehicle
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Administrator, Courier")]
         public async Task<ActionResult<IEnumerable<Vehicle>>> GetVehicles()
         {
           if (_context.Vehicles == null)
@@ -35,7 +37,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // GET: api/Vehicle/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize(Roles = "Administrator, Courier")]
         public async Task<ActionResult<Vehicle>> GetVehicle(int id)
         {
           if (_context.Vehicles == null)
@@ -54,7 +56,7 @@ namespace Saitynai_Delivery_System1.Controllers
 
         // PUT: api/Vehicle/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> PutVehicle(int id, VehicleDto request)
         {
             var oldVehicle = await _context.Vehicles.FindAsync(id);
@@ -78,7 +80,7 @@ namespace Saitynai_Delivery_System1.Controllers
 
         // POST: api/Vehicle
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrator")]
         public async Task<ActionResult<Vehicle>> PostVehicle(VehicleDto request)
         {
             if (_context.Vehicles == null)
@@ -99,7 +101,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // DELETE: api/Vehicle/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
             if (_context.Vehicles == null)
@@ -118,7 +120,7 @@ namespace Saitynai_Delivery_System1.Controllers
             return NoContent();
         }
 
-        [HttpGet("Packages/{id}")]
+        [HttpGet("{id}/Packages"), Authorize(Roles = "Administrator, Courier")]
         public async Task<ActionResult<IEnumerable<Package>>> GetVehiclePackages(int id)
         {
             if (_context.Vehicles == null)

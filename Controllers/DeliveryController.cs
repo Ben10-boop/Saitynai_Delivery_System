@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +25,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // GET: api/Delivery
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Administrator, Courier")]
         public async Task<ActionResult<IEnumerable<Delivery>>> GetDelivery()
         {
           if (_context.Deliveries == null)
@@ -34,7 +36,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // GET: api/Delivery/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize(Roles = "Administrator, Courier")]
         public async Task<ActionResult<Delivery>> GetDelivery(int id)
         {
           if (_context.Deliveries == null)
@@ -53,7 +55,7 @@ namespace Saitynai_Delivery_System1.Controllers
 
         // PUT: api/Delivery/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "Administrator, Courier")]
         public async Task<IActionResult> PutDelivery(int id, DeliveryDto request)
         {
             var oldDelivery = await _context.Deliveries.FindAsync(id);
@@ -82,7 +84,7 @@ namespace Saitynai_Delivery_System1.Controllers
 
         // POST: api/Delivery
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrator, Courier")]
         public async Task<ActionResult<Delivery>> PostDelivery(DeliveryDto request)
         {
             if (_context.Deliveries == null)
@@ -116,7 +118,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // DELETE: api/Delivery/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteDelivery(int id)
         {
             if (_context.Deliveries == null)

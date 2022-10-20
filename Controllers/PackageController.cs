@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +25,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // GET: api/Package
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Administrator, Courier")]
         public async Task<ActionResult<List<Package>>> GetPackages()
         {
           if (_context.Packages == null)
@@ -34,7 +36,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // GET: api/Package/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<ActionResult<Package>> GetPackage(int id)
         {
           if (_context.Packages == null)
@@ -53,7 +55,7 @@ namespace Saitynai_Delivery_System1.Controllers
 
         // PUT: api/Package/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "Administrator, Courier")]
         public async Task<IActionResult> PutPackage(int id, PackageDto request)
         {
             var oldPackage = await _context.Packages.FindAsync(id);
@@ -77,7 +79,7 @@ namespace Saitynai_Delivery_System1.Controllers
 
         // POST: api/Package
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrator")]
         public async Task<ActionResult<Package>> PostPackage(PackageDto request)
         {
             var recipient = await _context.Users.FindAsync(request.RecipientId);
@@ -104,7 +106,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // DELETE: api/Package/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeletePackage(int id)
         {
             if (_context.Packages == null)

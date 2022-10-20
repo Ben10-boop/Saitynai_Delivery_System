@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +26,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // GET: api/Courier
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<User>>> GetCouriers()
         {
           if (_context.Users == null)
@@ -35,7 +37,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // GET: api/Courier/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize(Roles = "Administrator")]
         public async Task<ActionResult<User>> GetCourier(int id)
         {
           if (_context.Users == null)
@@ -51,7 +53,7 @@ namespace Saitynai_Delivery_System1.Controllers
 
             return user;
         }
-
+        /*
         // PUT: api/Courier/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -66,23 +68,27 @@ namespace Saitynai_Delivery_System1.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(oldCourier);
-        }
+        }*/
 
         // POST: api/Courier
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrator")]
         public async Task<ActionResult<User>> PostCourier(CourierDto request)
         {
           if (_context.Users == null)
           {
               return Problem("Entity set 'DataContext.Users'  is null.");
           }
+
+            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+
             User newCourier = new()
             {
                 Email = request.Email,
                 Role = "Courier",
                 Status = "Active",
-                Password = request.Password,
+                PasswordSalt = passwordSalt,
+                PasswordHash = passwordHash,
                 Phone = request.Phone,
                 Wage = request.Wage
             };
@@ -93,7 +99,7 @@ namespace Saitynai_Delivery_System1.Controllers
         }
 
         // DELETE: api/Courier/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteCourier(int id)
         {
             if (_context.Users == null)
@@ -110,6 +116,14 @@ namespace Saitynai_Delivery_System1.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            using (var hmac = new HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
         }
     }
 }
