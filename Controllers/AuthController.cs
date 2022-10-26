@@ -31,6 +31,14 @@ namespace Saitynai_Delivery_System1.Controllers
                 return Problem("Entity set 'DataContext.Users'  is null.");
             }
 
+            foreach (User user in _context.Users)
+            {
+                if (user.Email == request.Email)
+                {
+                    return BadRequest("User with this email already exists");
+                }
+            }
+
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
             User newClient = new()
             {
@@ -99,7 +107,8 @@ namespace Saitynai_Delivery_System1.Controllers
         {
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Email),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Name, $"{user.Id}"),
                 new Claim(ClaimTypes.Role, user.Role)
             };
 

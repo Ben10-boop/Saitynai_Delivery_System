@@ -16,22 +16,34 @@ klientas gali peržiūrėti jam skirtos siuntos būseną.
 
 ### Funkciniai reikalavimai
 
-#### Registruotas naudotojas **Klientas** gali
+Toliau pateikiami metodai ir rolės, kurių atstovai gali juos pasiekti
 
-- Pateikęs siuntos numerį peržiūrėti jos būseną.
+Client - Klientas; Courier - Kurjeris; Admin - Administratorius
 
-#### Administratoriaus sukurtas naudotojas **Kurjeris** gali
+#### Siuntų (Package) metodai
 
-- Sukurti pristatymą (priskirtą sau), jį redaguoti;
-- Priskirti savo pristatymui siuntą;
-- Keisti sau priskirtos siuntos būseną.
+- Get (Courier; Admin)
+- Get{id} (Client(Tik pačiam priklausančias); Courier; Admin)
+- Put{id} (Courier(Laisvas ar pačiam priklausančias); Admin)
+- Post (Admin)
+- Delete (Admin)
 
-#### Išoriškai pridedamas naudotojas **Administratorius** gali
+#### Pristatymų (Delivery) metodai
 
-- valdyti (peržiūrėti, pridėti, redaguoti, šalinti) automobilius;
-- valdyti (peržiūrėti, pridėti, redaguoti, šalinti) siuntas;
-- valdyti (peržiūrėti, pridėti, redaguoti, šalinti) pristatymus;
-- valdyti (peržiūrėti, pridėti, redaguoti, šalinti) kurjerius.
+- Get (Courier; Admin)
+- Get{id} (Courier; Admin)
+- Put{id} (Courier(Tik pačiam priklausančias); Admin)
+- Post (Courier; Admin)
+- Delete (Admin)
+
+#### Pristatymo automobilių (Vehicle) metodai
+
+- Get (Courier; Admin)
+- Get{id} (Courier; Admin)
+- Put{id} (Admin)
+- Post (Admin)
+- Delete (Admin)
+- Get{id}/Packages (Courier; Admin)
 
 ### Sistemos struktūra
 

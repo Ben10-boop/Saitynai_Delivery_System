@@ -114,6 +114,12 @@ namespace Saitynai_Delivery_System1.Controllers
                 return NotFound();
             }
 
+            foreach (Delivery deliv in _context.Deliveries)
+            {
+                if (deliv.DeliveryVehicleId == vehicle.Id)
+                    return BadRequest("Can't delete this vehicle because there are deliveries assigned to it");
+            }
+
             _context.Vehicles.Remove(vehicle);
             await _context.SaveChangesAsync();
 

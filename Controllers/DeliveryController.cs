@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -60,7 +61,13 @@ namespace Saitynai_Delivery_System1.Controllers
         {
             var oldDelivery = await _context.Deliveries.FindAsync(id);
             if (oldDelivery == null) return BadRequest("Can't find the Delivery with given ID");
-            
+
+            int userID = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+            if (User.FindFirstValue(ClaimTypes.Role) == "Courier" && userID != oldDelivery.DeliveryCourierId)
+            {
+                return BadRequest("You can only edit your own deliveries");
+            }
+
             var updatedDeliveryVehicle = await _context.Vehicles.FindAsync(request.DeliveryVehicleId);
             if (updatedDeliveryVehicle != null) 
             {
@@ -129,6 +136,12 @@ namespace Saitynai_Delivery_System1.Controllers
             if (delivery == null)
             {
                 return NotFound();
+            }
+
+            foreach(Package pkg in _context.Packages)
+            {
+                if (pkg.AssignedToDeliveryId == delivery.Id)
+                    return BadRequest("Can't delete this delivery because there are packages assigned to it");
             }
 
             _context.Deliveries.Remove(delivery);

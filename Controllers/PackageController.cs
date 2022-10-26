@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -39,15 +40,21 @@ namespace Saitynai_Delivery_System1.Controllers
         [HttpGet("{id}"), Authorize]
         public async Task<ActionResult<Package>> GetPackage(int id)
         {
-          if (_context.Packages == null)
-          {
-              return NotFound();
-          }
+            if (_context.Packages == null)
+            {
+                return NotFound();
+            }
             var package = await _context.Packages.FindAsync(id);
 
             if (package == null)
             {
                 return NotFound();
+            }
+
+            int userID = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+            if(User.FindFirstValue(ClaimTypes.Role) == "Client" && userID != package.RecipientId)
+            {
+                return BadRequest("You can only view your own packages");
             }
 
             return package;
@@ -60,7 +67,16 @@ namespace Saitynai_Delivery_System1.Controllers
         {
             var oldPackage = await _context.Packages.FindAsync(id);
             if (oldPackage == null) return BadRequest("Couldn't find Package with given ID");
-            
+
+            int userID = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+            var oldPackageDelivery = await _context.Deliveries.FindAsync(oldPackage.AssignedToDeliveryId);
+            if (User.FindFirstValue(ClaimTypes.Role) == "Courier" &&
+                oldPackageDelivery != null &&
+                oldPackageDelivery.DeliveryCourierId != userID)
+            {
+                return BadRequest("This package has already been taken by another courier");
+            }
+
             var updatedDelivery = await _context.Deliveries.FindAsync(request.AssignedToDeliveryId);
             if (updatedDelivery != null)
             {

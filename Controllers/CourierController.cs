@@ -80,6 +80,14 @@ namespace Saitynai_Delivery_System1.Controllers
               return Problem("Entity set 'DataContext.Users'  is null.");
           }
 
+            foreach (User user in _context.Users)
+            {
+                if (user.Email == request.Email)
+                {
+                    return BadRequest("User with this email already exists");
+                }
+            }
+
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
             User newCourier = new()
