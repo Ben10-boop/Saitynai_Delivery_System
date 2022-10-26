@@ -22,28 +22,28 @@ Client - Klientas; Courier - Kurjeris; Admin - Administratorius
 
 #### Siuntų (Package) metodai
 
-- Get (Courier; Admin)
-- Get{id} (Client(Tik pačiam priklausančias); Courier; Admin)
-- Put{id} (Courier(Laisvas ar pačiam priklausančias); Admin)
-- Post (Admin)
-- Delete (Admin)
+- **Get** (Courier; Admin)
+- **Get{id}** (Client(Tik pačiam priklausančias); Courier; Admin)
+- **Put{id}** (Courier(Laisvas ar pačiam priklausančias); Admin)
+- **Post** (Admin)
+- **Delete** (Admin)
 
 #### Pristatymų (Delivery) metodai
 
-- Get (Courier; Admin)
-- Get{id} (Courier; Admin)
-- Put{id} (Courier(Tik pačiam priklausančias); Admin)
-- Post (Courier; Admin)
-- Delete (Admin)
+- **Get** (Courier; Admin)
+- **Get{id}** (Courier; Admin)
+- **Put{id}** (Courier(Tik pačiam priklausančias); Admin)
+- **Post** (Courier; Admin)
+- **Delete** (Admin)
 
 #### Pristatymo automobilių (Vehicle) metodai
 
-- Get (Courier; Admin)
-- Get{id} (Courier; Admin)
-- Put{id} (Admin)
-- Post (Admin)
-- Delete (Admin)
-- Get{id}/Packages (Courier; Admin)
+- **Get** (Courier; Admin)
+- **Get{id}** (Courier; Admin)
+- **Put{id}** (Admin)
+- **Post** (Admin)
+- **Delete** (Admin)
+- **Get{id}/Packages** (Courier; Admin)
 
 ### Sistemos struktūra
 
