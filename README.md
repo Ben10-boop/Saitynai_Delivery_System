@@ -154,26 +154,26 @@ Toliau pateikiama kiekvieno API metodo specifikcija. Jeigu kuri nors aprašo dal
 
 #### \[POST\] /api/Auth/Register
 
-##### Parameters
+##### Parametrai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| email | string | User's email address |
-| password | string | User's password |
+| email | string | Naudotojo elektroninio pašto adresas |
+| password | string | Naudotojo slaptažodis |
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| - | string | Result description |
+| - | string | Rezultato apibūdinimas |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 400
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 {
@@ -182,7 +182,7 @@ Request
 }
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -191,26 +191,26 @@ Registered successfully
 
 #### \[POST\] /api/Auth/Login
 
-##### Parameters
+##### Parametrai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| email | string | User's email address |
-| password | string | User's password |
+| email | string | Naudotojo elektroninio pašto adresas |
+| password | string | Naudotojo slaptažodis |
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| - | string | User's JSON Web Token |
+| - | string | Naudotojo JSON Web Token |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 400
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 {
@@ -219,7 +219,7 @@ Request
 }
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -230,25 +230,25 @@ eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIs
 
 #### \[GET\] /api/Delivery
 
-##### Response fields
+##### Atsako laukai
 
-List of the following data structures
+Toliau pateikiamos struktūros elementų sąrašas
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | delivery ID |
-| deliveryVehicleId | int | delivery vehicle ID |
-| deliveryCourierId | int | Courier's ID who made the delivery |
-| route | string | The general route of the delivery |
-| deliveryDate | string | The date of the delivery |
+| id | int | pristatymo ID |
+| deliveryVehicleId | int | pristatymo automobilio ID |
+| deliveryCourierId | int | kurjerio, atlikusio pristatymą, ID |
+| route | string | bendras pristatymo maršrutas |
+| deliveryDate | string | pristatymo data |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 401, 403
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -286,32 +286,32 @@ Code: 200
 
 #### \[POST\] /api/Delivery
 
-##### Parameters
+##### Parametrai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| deliveryVehicleId | int | delivery vehicle ID |
-| deliveryCourierId | int | Courier's ID who made the delivery |
-| route | string | The general route of the delivery |
-| deliveryDate | string | The date of the delivery |
+| deliveryVehicleId | int | pristatymo automobilio ID |
+| deliveryCourierId | int | kurjerio, atlikusio pristatymą, ID |
+| route | string | bendras pristatymo maršrutas |
+| deliveryDate | string | pristatymo data |
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | delivery ID |
-| deliveryVehicleId | int | delivery vehicle ID |
-| deliveryCourierId | int | Courier's ID who made the delivery |
-| route | string | The general route of the delivery |
-| deliveryDate | string | The date of the delivery |
+| id | int | pristatymo ID |
+| deliveryVehicleId | int | pristatymo automobilio ID |
+| deliveryCourierId | int | kurjerio, atlikusio pristatymą, ID |
+| route | string | bendras pristatymo maršrutas |
+| deliveryDate | string | pristatymo data |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 201, 400, 401, 403
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 {
@@ -322,7 +322,7 @@ Request
 }
 ```
 
-Response
+Atsakas
 
 ```
 Code: 201
@@ -337,29 +337,29 @@ Code: 201
 
 #### \[GET\] /api/Delivery/{id}
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | delivery ID |
-| deliveryVehicleId | int | delivery vehicle ID |
-| deliveryCourierId | int | Courier's ID who made the delivery |
-| route | string | The general route of the delivery |
-| deliveryDate | string | The date of the delivery |
+| id | int | pristatymo ID |
+| deliveryVehicleId | int | pristatymo automobilio ID |
+| deliveryCourierId | int | kurjerio, atlikusio pristatymą, ID |
+| route | string | bendras pristatymo maršrutas |
+| deliveryDate | string | pristatymo data |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 4
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -374,34 +374,34 @@ Code: 200
 
 #### \[PUT\] /api/Delivery/{id}
 
-##### Parameters
+##### Parametrai
 
-(All optional, need to enter at least one)
+(Visi laukai nėra reikalaujami, užtenka įvesti vieną)
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| deliveryVehicleId | int | delivery vehicle ID |
-| deliveryCourierId | int | Courier's ID who made the delivery |
-| route | string | The general route of the delivery |
-| deliveryDate | string | The date of the delivery |
+| deliveryVehicleId | int | pristatymo automobilio ID |
+| deliveryCourierId | int | kurjerio, atlikusio pristatymą, ID |
+| route | string | bendras pristatymo maršrutas |
+| deliveryDate | string | pristatymo data |
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | delivery ID |
-| deliveryVehicleId | int | delivery vehicle ID |
-| deliveryCourierId | int | Courier's ID who made the delivery |
-| route | string | The general route of the delivery |
-| deliveryDate | string | The date of the delivery |
+| id | int | pristatymo ID |
+| deliveryVehicleId | int | pristatymo automobilio ID |
+| deliveryCourierId | int | kurjerio, atlikusio pristatymą, ID |
+| route | string | bendras pristatymo maršrutas |
+| deliveryDate | string | pristatymo data |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 400, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 10
@@ -410,7 +410,7 @@ id : 10
 }
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -425,23 +425,23 @@ Code: 200
 
 #### \[DELETE\] /api/Delivery/{id}
 
-##### Response fields
+##### Atsako laukai
 
 /-
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 204, 400, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 10
 ```
 
-Response
+Atsakas
 
 ```
 Code: 204
@@ -451,27 +451,27 @@ Code: 204
 
 #### \[GET\] /api/Package
 
-##### Response fields
+##### Atsako laukai
 
-List of the following data structures
+Toliau pateikiamos struktūros elementų sąrašas
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | Package ID |
-| size | string | General size of the package |
-| weight | float | Weight of the package |
-| address | string | Package recipient's address |
-| recipientId | int | Package recipient's ID |
-| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
-| state | string | delivery state of the package |
+| id | int | siuntos ID |
+| size | string | apibendrintas siuntos dydis |
+| weight | float | siuntos svoris |
+| address | string | siuntos gavėjo adresas |
+| recipientId | int | siuntos gavėjo ID |
+| assignedToDeliveryId | int | pristatymo ID, kuriam priskirta siunta |
+| state | string | siuntos pristatymo būsena |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 401, 403
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -508,36 +508,36 @@ Code: 200
 
 #### \[POST\] /api/Package
 
-##### Parameters
+##### Parametrai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| size | string | General size of the package |
-| weight | float | Weight of the package |
-| address | string | Package recipient's address |
-| recipientId | int | Package recipient's ID |
-| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
-| state | string | delivery state of the package |
+| size | string | apibendrintas siuntos dydis |
+| weight | float | siuntos svoris |
+| address | string | siuntos gavėjo adresas |
+| recipientId | int | siuntos gavėjo ID |
+| assignedToDeliveryId | int | pristatymo ID, kuriam priskirta siunta |
+| state | string | siuntos pristatymo būsena |
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | Package ID |
-| size | string | General size of the package |
-| weight | float | Weight of the package |
-| address | string | Package recipient's address |
-| recipientId | int | Package recipient's ID |
-| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
-| state | string | delivery state of the package |
+| id | int | siuntos ID |
+| size | string | apibendrintas siuntos dydis |
+| weight | float | siuntos svoris |
+| address | string | siuntos gavėjo adresas |
+| recipientId | int | siuntos gavėjo ID |
+| assignedToDeliveryId | int | pristatymo ID, kuriam priskirta siunta |
+| state | string | siuntos pristatymo būsena |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 201, 400, 401, 403
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 {
@@ -549,7 +549,7 @@ Request
 }
 ```
 
-Response
+Atsakas
 
 ```
 Code: 201
@@ -566,31 +566,31 @@ Code: 201
 
 #### \[GET\] /api/Package/{id}
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | Package ID |
-| size | string | General size of the package |
-| weight | float | Weight of the package |
-| address | string | Package recipient's address |
-| recipientId | int | Package recipient's ID |
-| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
-| state | string | delivery state of the package |
+| id | int | siuntos ID |
+| size | string | apibendrintas siuntos dydis |
+| weight | float | siuntos svoris |
+| address | string | siuntos gavėjo adresas |
+| recipientId | int | siuntos gavėjo ID |
+| assignedToDeliveryId | int | pristatymo ID, kuriam priskirta siunta |
+| state | string | siuntos pristatymo būsena |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 15
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -607,38 +607,38 @@ Code: 200
 
 #### \[PUT\] /api/Package/{id}
 
-##### Parameters
+##### Parametrai
 
-(All optional, need to enter at least one)
+(Visi laukai nėra reikalaujami, užtenka įvesti vieną)
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| size | string | General size of the package |
-| weight | float | Weight of the package |
-| address | string | Package recipient's address |
-| recipientId | int | Package recipient's ID |
-| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
-| state | string | delivery state of the package |
+| size | string | apibendrintas siuntos dydis |
+| weight | float | siuntos svoris |
+| address | string | siuntos gavėjo adresas |
+| recipientId | int | siuntos gavėjo ID |
+| assignedToDeliveryId | int | pristatymo ID, kuriam priskirta siunta |
+| state | string | siuntos pristatymo būsena |
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | Package ID |
-| size | string | General size of the package |
-| weight | float | Weight of the package |
-| address | string | Package recipient's address |
-| recipientId | int | Package recipient's ID |
-| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
-| state | string | delivery state of the package |
+| id | int | siuntos ID |
+| size | string | apibendrintas siuntos dydis |
+| weight | float | siuntos svoris |
+| address | string | siuntos gavėjo adresas |
+| recipientId | int | siuntos gavėjo ID |
+| assignedToDeliveryId | int | pristatymo ID, kuriam priskirta siunta |
+| state | string | siuntos pristatymo būsena |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 400, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 15
@@ -647,7 +647,7 @@ id : 15
 }
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -664,23 +664,23 @@ Code: 200
 
 #### \[DELETE\] /api/Package/{id}
 
-##### Response fields
+##### Atsako laukai
 
 /-
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 204, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 15
 ```
 
-Response
+Atsakas
 
 ```
 Code: 204
@@ -690,26 +690,26 @@ Code: 204
 
 #### \[GET\] /api/Vehicle
 
-##### Response fields
+##### Atsako laukai
 
-List of the following data structures
+Toliau pateikiamos struktūros elementų sąrašas
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | vehicle ID |
-| regNumbers | int | vehicle registration numbers |
-| brand | int | vehicle brand |
-| model | string | vehicle model |
-| maxPayload | string | maximum payload of the vehicle |
-| driverId | string | ID of the vehicle's driver |
+| id | int | automobilio ID |
+| regNumbers | int | automobilio registracijos numeriai |
+| brand | int | automobilio markė |
+| model | string | automobilio modelis |
+| maxPayload | string | maksimali automobilio apkrova (kg) |
+| driverId | string | automobilio vairuotojo ID |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 401, 403
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -735,34 +735,34 @@ Code: 200
 
 #### \[POST\] /api/Vehicle
 
-##### Parameters
+##### Parametrai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| regNumbers | int | vehicle registration numbers |
-| brand | int | vehicle brand |
-| model | string | vehicle model |
-| maxPayload | string | maximum payload of the vehicle |
-| driverId | string | ID of the vehicle's driver |
+| regNumbers | int | automobilio registracijos numeriai |
+| brand | int | automobilio markė |
+| model | string | automobilio modelis |
+| maxPayload | string | maksimali automobilio apkrova (kg) |
+| driverId | string | automobilio vairuotojo ID |
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | vehicle ID |
-| regNumbers | int | vehicle registration numbers |
-| brand | int | vehicle brand |
-| model | string | vehicle model |
-| maxPayload | string | maximum payload of the vehicle |
-| driverId | string | ID of the vehicle's driver |
+| id | int | automobilio ID |
+| regNumbers | int | automobilio registracijos numeriai |
+| brand | int | automobilio markė |
+| model | string | automobilio modelis |
+| maxPayload | string | maksimali automobilio apkrova (kg) |
+| driverId | string | automobilio vairuotojo ID |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 201, 400, 401, 403
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 {
@@ -773,7 +773,7 @@ Request
 }
 ```
 
-Response
+Atsakas
 
 ```
 Code: 201
@@ -789,30 +789,30 @@ Code: 201
 
 #### \[GET\] /api/Vehicle/{id}
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | vehicle ID |
-| regNumbers | int | vehicle registration numbers |
-| brand | int | vehicle brand |
-| model | string | vehicle model |
-| maxPayload | string | maximum payload of the vehicle |
-| driverId | string | ID of the vehicle's driver |
+| id | int | automobilio ID |
+| regNumbers | int | automobilio registracijos numeriai |
+| brand | int | automobilio markė |
+| model | string | automobilio modelis |
+| maxPayload | string | maksimali automobilio apkrova (kg) |
+| driverId | string | automobilio vairuotojo ID |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 4
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -828,36 +828,36 @@ Code: 200
 
 #### \[PUT\] /api/Vehicle/{id}
 
-##### Parameters
+##### Parametrai
 
-(All optional, need to enter at least one)
+(Visi laukai nėra reikalaujami, užtenka įvesti vieną)
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| regNumbers | int | vehicle registration numbers |
-| brand | int | vehicle brand |
-| model | string | vehicle model |
-| maxPayload | string | maximum payload of the vehicle |
-| driverId | string | ID of the vehicle's driver |
+| regNumbers | int | automobilio registracijos numeriai |
+| brand | int | automobilio markė |
+| model | string | automobilio modelis |
+| maxPayload | string | maksimali automobilio apkrova (kg) |
+| driverId | string | automobilio vairuotojo ID |
 
-##### Response fields
+##### Atsako laukai
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | vehicle ID |
-| regNumbers | int | vehicle registration numbers |
-| brand | int | vehicle brand |
-| model | string | vehicle model |
-| maxPayload | string | maximum payload of the vehicle |
-| driverId | string | ID of the vehicle's driver |
+| id | int | automobilio ID |
+| regNumbers | int | automobilio registracijos numeriai |
+| brand | int | automobilio markė |
+| model | string | automobilio modelis |
+| maxPayload | string | maksimali automobilio apkrova (kg) |
+| driverId | string | automobilio vairuotojo ID |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 400, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 4
@@ -866,7 +866,7 @@ id : 4
 }
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
@@ -882,23 +882,23 @@ Code: 200
 
 #### \[DELETE\] /api/Vehicle/{id}
 
-##### Response fields
+##### Atsako laukai
 
 /-
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 204, 400, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 4
 ```
 
-Response
+Atsakas
 
 ```
 Code: 204
@@ -906,33 +906,33 @@ Code: 204
 
 #### \[GET\] /api/Vehicle/{id}/Packages
 
-##### Response fields
+##### Atsako laukai
 
-List of the following data structures
+Toliau pateikiamos struktūros elementų sąrašas
 
-| Name | Type | Description |
+| Pavadinimas | Tipas | Aprašymas |
 | --- | --- | --- |
-| id | int | Package ID |
-| size | string | General size of the package |
-| weight | float | Weight of the package |
-| address | string | Package recipient's address |
-| recipientId | int | Package recipient's ID |
-| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
-| state | string | delivery state of the package |
+| id | int | siuntos ID |
+| size | string | apibendrintas siuntos dydis |
+| weight | float | siuntos svoris |
+| address | string | siuntos gavėjo adresas |
+| recipientId | int | siuntos gavėjo ID |
+| assignedToDeliveryId | int | pristatymo ID, kuriam priskirta siunta |
+| state | string | siuntos pristatymo būsena |
 
-##### Possible response codes
+##### Galimi atsako kodai
 
 200, 401, 403, 404
 
-##### Usage example
+##### Naudojimo pavyzdys
 
-Request
+Užklausa
 
 ```
 id : 1
 ```
 
-Response
+Atsakas
 
 ```
 Code: 200
