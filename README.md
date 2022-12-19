@@ -148,26 +148,26 @@ dalys talpinamos tame pačiame serveryje.
 
 ### Auth
 
-####**Post** /api/Auth/Register
+#### **Post** /api/Auth/Register
 
-#####Parameters
+##### Parameters
 
 | Name | Type | Description |
 | --- | --- | --- |
 | email | string | User's email address |
 | password | string | User's password |
 
-#####Response fields
+##### Response fields
 
 | Name | Type | Description |
 | --- | --- | --- |
 | - | string | Rseult description |
 
-#####Possible response codes
+##### Possible response codes
 
 200, 400
 
-#####Usage example
+##### Usage example
 
 Request
 
@@ -184,4 +184,4 @@ Response
 Registered successfully
 ```
 
-####**Post** /api/Auth/Login
+#### **Post** /api/Auth/Login
