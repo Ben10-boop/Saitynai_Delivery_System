@@ -63,3 +63,17 @@ Toliau pavaizduota sistemos diegimo diagrama. Sistemos talpinimui naudojamas Azu
 dalys talpinamos tame pačiame serveryje.
 
 ![Sistemos diegimo diagrama](https://cdn.discordapp.com/attachments/890247339648909322/1019520678443094127/Sait_Deployment.png "Sistemos diegimo diagrama")
+
+## Naudotojo sąsajos projektas
+
+#### Prisijungimas
+
+![Prisijungimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054323023911604325/image.png "Prisijungimo wireframe")
+
+![Prisijungimo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054323512724181012/image.png "Prisijungimo langas")
+
+#### Registracija
+
+![Registracijos wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054324145518809088/image.png "Registracijos wireframe")
+
+![Registracijos langas](https://cdn.discordapp.com/attachments/890247339648909322/1054323763526770748/image.png "Registracijos langas")
