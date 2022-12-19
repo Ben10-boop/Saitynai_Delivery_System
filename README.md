@@ -77,3 +77,69 @@ dalys talpinamos tame pačiame serveryje.
 ![Registracijos wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054324145518809088/image.png "Registracijos wireframe")
 
 ![Registracijos langas](https://cdn.discordapp.com/attachments/890247339648909322/1054323763526770748/image.png "Registracijos langas")
+
+#### Namų langas
+
+![Namų lango wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054324801931591720/image.png "Namų lango wireframe")
+
+![Namų langas](https://cdn.discordapp.com/attachments/890247339648909322/1054325168220164146/image.png "Namų langas")
+
+#### Siuntų sąrašas
+
+![Siuntų sąrašo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054325675642859550/image.png "Siuntų sąrašo wireframe")
+
+![Siuntų sąrašo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054326025351340093/image.png "Siuntų sąrašo langas")
+
+#### Siuntos pridėjimas
+
+![Siuntos pridėjimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054326499920060426/image.png "Siuntos pridėjimo wireframe")
+
+![Siuntos pridėjimo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054326799921848400/image.png "Siuntos pridėjimo langas")
+
+#### Siuntos redagavimas
+
+![Siuntos redagavimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054327697595170876/image.png "Siuntos redagavimo wireframe")
+
+![Siuntos redagavimo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054328021743575080/image.png "Siuntos redagavimao langas")
+
+#### Siuntos paieška
+
+![Siuntos paieškos wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054333359930753024/image.png "Siuntos paieškos wireframe")
+
+![Siuntos paieškos langas](https://cdn.discordapp.com/attachments/890247339648909322/1054333450691280946/image.png "Siuntos paieškos langas")
+
+#### Pristatymų sąrašas
+
+![Pristatymų sąrašo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054328426896564255/image.png "Pristatymų sąrašo wireframe")
+
+![Pristatymų sąrašo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054328587777474630/image.png "Pristatymų sąrašo langas")
+
+#### Pristatytmo pridėjimas
+
+![Pristatytmo pridėjimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054328970935545877/image.png "Pristatytmo pridėjimo wireframe")
+
+![Pristatytmo pridėjimo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054329066905403432/image.png "Pristatytmo pridėjimo langas")
+
+#### Pristatymo redagavimas
+
+![Pristatymo redagavimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054330921123319878/image.png "Pristatymo redagavimo wireframe")
+
+![Pristatymo redagavimo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054331045039841300/image.png "Pristatymo redagavimo langas")
+
+#### Automobilių sąrašas
+
+![Automobilių sąrašo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054331469864128572/image.png "Automobilių sąrašo wireframe")
+
+![Automobilių sąrašo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054331556979806248/image.png "Automobilių sąrašo langas")
+
+#### Automobilio pridėjimas
+
+![Automobilio pridėjimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054331891702059018/image.png "Automobilio pridėjimo wireframe")
+
+![Automobilio pridėjimo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054331952972451850/image.png "Automobilio pridėjimo langas")
+
+#### Automobilio redagavimas
+
+![Automobilio redagavimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054332731032600586/image.png "Automobilio redagavimo wireframe")
+
+![Automobilio redagavimo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054332935970488360/image.png "Automobilio redagavimo langas")
