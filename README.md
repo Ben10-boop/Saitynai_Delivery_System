@@ -148,7 +148,7 @@ dalys talpinamos tame pačiame serveryje.
 
 ### Auth
 
-#### **Post** /api/Auth/Register
+#### \[Post\] /api/Auth/Register
 
 ##### Parameters
 
@@ -184,4 +184,4 @@ Response
 Registered successfully
 ```
 
-#### **Post** /api/Auth/Login
+#### \[Post\] /api/Auth/Login
