@@ -143,3 +143,45 @@ dalys talpinamos tame pačiame serveryje.
 ![Automobilio redagavimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054332731032600586/image.png "Automobilio redagavimo wireframe")
 
 ![Automobilio redagavimo langas](https://cdn.discordapp.com/attachments/890247339648909322/1054332935970488360/image.png "Automobilio redagavimo langas")
+
+## API specifikacija
+
+### Auth
+
+####**Post** /api/Auth/Register
+
+#####Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| email | string | User's email address |
+| password | string | User's password |
+
+#####Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| - | string | Rseult description |
+
+#####Possible response codes
+
+200, 400
+
+#####Usage example
+
+Request
+
+```
+{
+  "email": "user@example.com",
+  "password": "stringstr"
+}
+```
+
+Response
+
+```
+Registered successfully
+```
+
+####**Post** /api/Auth/Login
