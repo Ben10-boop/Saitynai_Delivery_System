@@ -66,6 +66,8 @@ dalys talpinamos tame pačiame serveryje.
 
 ## Naudotojo sąsajos projektas
 
+Toliau pateikiamas naudotojo sąsajos projektas. Kiekvienam langui pateikiamas to lango wireframe, o po to realizacija.
+
 #### Prisijungimas
 
 ![Prisijungimo wireframe](https://cdn.discordapp.com/attachments/890247339648909322/1054323023911604325/image.png "Prisijungimo wireframe")
@@ -146,9 +148,11 @@ dalys talpinamos tame pačiame serveryje.
 
 ## API specifikacija
 
+Toliau pateikiama kiekvieno API metodo specifikcija. Jeigu kuri nors aprašo dalis yra praleista, reiškia, jog tos dalies nėra pačioje funkcijoje.
+
 ### Auth
 
-#### \[Post\] /api/Auth/Register
+#### \[POST\] /api/Auth/Register
 
 ##### Parameters
 
@@ -161,7 +165,7 @@ dalys talpinamos tame pačiame serveryje.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| - | string | Rseult description |
+| - | string | Result description |
 
 ##### Possible response codes
 
@@ -181,7 +185,799 @@ Request
 Response
 
 ```
+Code: 200
 Registered successfully
 ```
 
-#### \[Post\] /api/Auth/Login
+#### \[POST\] /api/Auth/Login
+
+##### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| email | string | User's email address |
+| password | string | User's password |
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| - | string | User's JSON Web Token |
+
+##### Possible response codes
+
+200, 400
+
+##### Usage example
+
+Request
+
+```
+{
+  "email": "user@example.com",
+  "password": "stringstr"
+}
+```
+
+Response
+
+```
+Code: 200
+eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ1c2VyQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IjEyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQ2xpZW50IiwiZXhwIjoxNjcxNTQwNTY3fQ.FCAN72ahkdgygrOfriZCGBysAwwMP5xCq_fzF9aZ9uA
+```
+
+### Delivery
+
+#### \[GET\] /api/Delivery
+
+##### Response fields
+
+List of the following data structures
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | delivery ID |
+| deliveryVehicleId | int | delivery vehicle ID |
+| deliveryCourierId | int | Courier's ID who made the delivery |
+| route | string | The general route of the delivery |
+| deliveryDate | string | The date of the delivery |
+
+##### Possible response codes
+
+200, 401, 403
+
+##### Usage example
+
+Response
+
+```
+Code: 200
+[
+  {
+    "id": 1,
+    "deliveryVehicleId": 1,
+    "deliveryCourierId": 3,
+    "route": "Length town",
+    "deliveryDate": "2022-09-15T11:19:21.334"
+  },
+  {
+    "id": 4,
+    "deliveryVehicleId": 2,
+    "deliveryCourierId": 4,
+    "route": "Length Town",
+    "deliveryDate": "2022-09-15T11:19:21.334"
+  },
+  {
+    "id": 8,
+    "deliveryVehicleId": 1,
+    "deliveryCourierId": 4,
+    "route": "Width town",
+    "deliveryDate": "2022-09-15T11:19:21.33"
+  },
+  {
+    "id": 9,
+    "deliveryVehicleId": 2,
+    "deliveryCourierId": 4,
+    "route": "Width Town",
+    "deliveryDate": "2022-10-01T15:55:33.338447"
+  }
+]
+```
+
+#### \[POST\] /api/Delivery
+
+##### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| deliveryVehicleId | int | delivery vehicle ID |
+| deliveryCourierId | int | Courier's ID who made the delivery |
+| route | string | The general route of the delivery |
+| deliveryDate | string | The date of the delivery |
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | delivery ID |
+| deliveryVehicleId | int | delivery vehicle ID |
+| deliveryCourierId | int | Courier's ID who made the delivery |
+| route | string | The general route of the delivery |
+| deliveryDate | string | The date of the delivery |
+
+##### Possible response codes
+
+201, 400, 401, 403
+
+##### Usage example
+
+Request
+
+```
+{
+  "deliveryVehicleId": 2,
+  "deliveryCourierId": 5,
+  "route": "string",
+  "deliveryDate": "2022-12-19T13:05:32.487Z"
+}
+```
+
+Response
+
+```
+Code: 201
+{
+  "id": 10,
+  "deliveryVehicleId": 2,
+  "deliveryCourierId": 5,
+  "route": "string",
+  "deliveryDate": "2022-12-19T13:05:32.487Z"
+}
+```
+
+#### \[GET\] /api/Delivery/{id}
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | delivery ID |
+| deliveryVehicleId | int | delivery vehicle ID |
+| deliveryCourierId | int | Courier's ID who made the delivery |
+| route | string | The general route of the delivery |
+| deliveryDate | string | The date of the delivery |
+
+##### Possible response codes
+
+200, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 4
+```
+
+Response
+
+```
+Code: 200
+{
+  "id": 4,
+  "deliveryVehicleId": 2,
+  "deliveryCourierId": 4,
+  "route": "Length Town",
+  "deliveryDate": "2022-09-15T11:19:21.334"
+}
+```
+
+#### \[PUT\] /api/Delivery/{id}
+
+##### Parameters
+
+(All optional, need to enter at least one)
+
+| Name | Type | Description |
+| --- | --- | --- |
+| deliveryVehicleId | int | delivery vehicle ID |
+| deliveryCourierId | int | Courier's ID who made the delivery |
+| route | string | The general route of the delivery |
+| deliveryDate | string | The date of the delivery |
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | delivery ID |
+| deliveryVehicleId | int | delivery vehicle ID |
+| deliveryCourierId | int | Courier's ID who made the delivery |
+| route | string | The general route of the delivery |
+| deliveryDate | string | The date of the delivery |
+
+##### Possible response codes
+
+200, 400, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 10
+{
+  "route": "Cool city"
+}
+```
+
+Response
+
+```
+Code: 200
+{
+  "id": 10,
+  "deliveryVehicleId": 2,
+  "deliveryCourierId": 5,
+  "route": "Cool city",
+  "deliveryDate": "2022-12-19T13:05:32.487"
+}
+```
+
+#### \[DELETE\] /api/Delivery/{id}
+
+##### Response fields
+
+/-
+
+##### Possible response codes
+
+204, 400, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 10
+```
+
+Response
+
+```
+Code: 204
+```
+
+### Package
+
+#### \[GET\] /api/Package
+
+##### Response fields
+
+List of the following data structures
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | Package ID |
+| size | string | General size of the package |
+| weight | float | Weight of the package |
+| address | string | Package recipient's address |
+| recipientId | int | Package recipient's ID |
+| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
+| state | string | delivery state of the package |
+
+##### Possible response codes
+
+200, 401, 403
+
+##### Usage example
+
+Response
+
+```
+Code: 200
+[
+  {
+    "id": 5,
+    "size": "small",
+    "weight": 1,
+    "address": "Long st. 39",
+    "recipientId": 7,
+    "assignedToDeliveryId": 1,
+    "state": "In warehouse"
+  },
+  {
+    "id": 6,
+    "size": "small",
+    "weight": 10,
+    "address": "Short st. 40",
+    "recipientId": 1,
+    "assignedToDeliveryId": 1,
+    "state": "Being delivered"
+  },
+  {
+    "id": 7,
+    "size": "large",
+    "weight": 16,
+    "address": "Wide st. 2A",
+    "recipientId": 1,
+    "assignedToDeliveryId": 8,
+    "state": "In warehouse"
+  }
+]
+```
+
+#### \[POST\] /api/Package
+
+##### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| size | string | General size of the package |
+| weight | float | Weight of the package |
+| address | string | Package recipient's address |
+| recipientId | int | Package recipient's ID |
+| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
+| state | string | delivery state of the package |
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | Package ID |
+| size | string | General size of the package |
+| weight | float | Weight of the package |
+| address | string | Package recipient's address |
+| recipientId | int | Package recipient's ID |
+| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
+| state | string | delivery state of the package |
+
+##### Possible response codes
+
+201, 400, 401, 403
+
+##### Usage example
+
+Request
+
+```
+{
+  "size": "small",
+  "weight": 3,
+  "address": "string",
+  "recipientId": 1,
+  "state": "in warehouse"
+}
+```
+
+Response
+
+```
+Code: 201
+{
+  "id": 15,
+  "size": "small",
+  "weight": 3,
+  "address": "string",
+  "recipientId": 1,
+  "assignedToDeliveryId": null,
+  "state": "in warehouse"
+}
+```
+
+#### \[GET\] /api/Package/{id}
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | Package ID |
+| size | string | General size of the package |
+| weight | float | Weight of the package |
+| address | string | Package recipient's address |
+| recipientId | int | Package recipient's ID |
+| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
+| state | string | delivery state of the package |
+
+##### Possible response codes
+
+200, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 15
+```
+
+Response
+
+```
+Code: 200
+{
+  "id": 15,
+  "size": "small",
+  "weight": 3,
+  "address": "string",
+  "recipientId": 1,
+  "assignedToDeliveryId": null,
+  "state": "in warehouse"
+}
+```
+
+#### \[PUT\] /api/Package/{id}
+
+##### Parameters
+
+(All optional, need to enter at least one)
+
+| Name | Type | Description |
+| --- | --- | --- |
+| size | string | General size of the package |
+| weight | float | Weight of the package |
+| address | string | Package recipient's address |
+| recipientId | int | Package recipient's ID |
+| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
+| state | string | delivery state of the package |
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | Package ID |
+| size | string | General size of the package |
+| weight | float | Weight of the package |
+| address | string | Package recipient's address |
+| recipientId | int | Package recipient's ID |
+| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
+| state | string | delivery state of the package |
+
+##### Possible response codes
+
+200, 400, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 15
+{
+  "address": "Wide st. 56"
+}
+```
+
+Response
+
+```
+Code: 200
+{
+  "id": 15,
+  "size": "small",
+  "weight": 3,
+  "address": "Wide st. 56",
+  "recipientId": 1,
+  "assignedToDeliveryId": null,
+  "state": "in warehouse"
+}
+```
+
+#### \[DELETE\] /api/Package/{id}
+
+##### Response fields
+
+/-
+
+##### Possible response codes
+
+204, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 15
+```
+
+Response
+
+```
+Code: 204
+```
+
+### Vehicle
+
+#### \[GET\] /api/Vehicle
+
+##### Response fields
+
+List of the following data structures
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | vehicle ID |
+| regNumbers | int | vehicle registration numbers |
+| brand | int | vehicle brand |
+| model | string | vehicle model |
+| maxPayload | string | maximum payload of the vehicle |
+| driverId | string | ID of the vehicle's driver |
+
+##### Possible response codes
+
+200, 401, 403
+
+##### Usage example
+
+Response
+
+```
+Code: 200
+[
+  {
+    "id": 1,
+    "regNumbers": "AAA111",
+    "brand": "Mercedes",
+    "model": "Sprinter",
+    "maxPayload": 2675,
+    "driverId": 3
+  },
+  {
+    "id": 2,
+    "regNumbers": "BBB666",
+    "brand": "Audi",
+    "model": "A6",
+    "maxPayload": 500,
+    "driverId": 4
+  }
+]
+```
+
+#### \[POST\] /api/Vehicle
+
+##### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| regNumbers | int | vehicle registration numbers |
+| brand | int | vehicle brand |
+| model | string | vehicle model |
+| maxPayload | string | maximum payload of the vehicle |
+| driverId | string | ID of the vehicle's driver |
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | vehicle ID |
+| regNumbers | int | vehicle registration numbers |
+| brand | int | vehicle brand |
+| model | string | vehicle model |
+| maxPayload | string | maximum payload of the vehicle |
+| driverId | string | ID of the vehicle's driver |
+
+##### Possible response codes
+
+201, 400, 401, 403
+
+##### Usage example
+
+Request
+
+```
+{
+  "regNumbers": "LLL676",
+  "brand": "Subaru",
+  "model": "Forester",
+  "maxPayload": 800
+}
+```
+
+Response
+
+```
+Code: 201
+{
+  "id": 4,
+  "regNumbers": "LLL676",
+  "brand": "Subaru",
+  "model": "Forester",
+  "maxPayload": 800,
+  "driverId": null
+}
+```
+
+#### \[GET\] /api/Vehicle/{id}
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | vehicle ID |
+| regNumbers | int | vehicle registration numbers |
+| brand | int | vehicle brand |
+| model | string | vehicle model |
+| maxPayload | string | maximum payload of the vehicle |
+| driverId | string | ID of the vehicle's driver |
+
+##### Possible response codes
+
+200, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 4
+```
+
+Response
+
+```
+Code: 200
+{
+  "id": 4,
+  "regNumbers": "LLL676",
+  "brand": "Subaru",
+  "model": "Forester",
+  "maxPayload": 800,
+  "driverId": null
+}
+```
+
+#### \[PUT\] /api/Vehicle/{id}
+
+##### Parameters
+
+(All optional, need to enter at least one)
+
+| Name | Type | Description |
+| --- | --- | --- |
+| regNumbers | int | vehicle registration numbers |
+| brand | int | vehicle brand |
+| model | string | vehicle model |
+| maxPayload | string | maximum payload of the vehicle |
+| driverId | string | ID of the vehicle's driver |
+
+##### Response fields
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | vehicle ID |
+| regNumbers | int | vehicle registration numbers |
+| brand | int | vehicle brand |
+| model | string | vehicle model |
+| maxPayload | string | maximum payload of the vehicle |
+| driverId | string | ID of the vehicle's driver |
+
+##### Possible response codes
+
+200, 400, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 4
+{
+  "driverId": 5
+}
+```
+
+Response
+
+```
+Code: 200
+{
+  "id": 4,
+  "regNumbers": "LLL676",
+  "brand": "Subaru",
+  "model": "Forester",
+  "maxPayload": 800,
+  "driverId": 5
+}
+```
+
+#### \[DELETE\] /api/Vehicle/{id}
+
+##### Response fields
+
+/-
+
+##### Possible response codes
+
+204, 400, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 4
+```
+
+Response
+
+```
+Code: 204
+```
+
+#### \[GET\] /api/Vehicle/{id}/Packages
+
+##### Response fields
+
+List of the following data structures
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | int | Package ID |
+| size | string | General size of the package |
+| weight | float | Weight of the package |
+| address | string | Package recipient's address |
+| recipientId | int | Package recipient's ID |
+| assignedToDeliveryId | int | ID of the delivery the package is assigned to |
+| state | string | delivery state of the package |
+
+##### Possible response codes
+
+200, 401, 403, 404
+
+##### Usage example
+
+Request
+
+```
+id : 1
+```
+
+Response
+
+```
+Code: 200
+[
+  {
+    "id": 5,
+    "size": "small",
+    "weight": 1,
+    "address": "Long st. 39",
+    "recipientId": 7,
+    "assignedToDeliveryId": 1,
+    "state": "In warehouse"
+  },
+  {
+    "id": 6,
+    "size": "small",
+    "weight": 10,
+    "address": "Short st. 40",
+    "recipientId": 1,
+    "assignedToDeliveryId": 1,
+    "state": "Being delivered"
+  },
+  {
+    "id": 7,
+    "size": "large",
+    "weight": 16,
+    "address": "Wide st. 2A",
+    "recipientId": 1,
+    "assignedToDeliveryId": 8,
+    "state": "In warehouse"
+  },
+  {
+    "id": 8,
+    "size": "large",
+    "weight": 20,
+    "address": "Wide st. 2A",
+    "recipientId": 6,
+    "assignedToDeliveryId": 8,
+    "state": "In warehouse"
+  }
+]
+```
+
+## Išvados
+
+1. Kuriant projekto API sąsają, tinkamai aprašius galimas klaidas, sukūrus apribojimus kintamiesiems, lieka mažiau darbo kuriant naudotojo sąsają - joje pasirūpinti šiais elementais yra daug sudėtingiau.
+2. JWT autentifikacija yra nesunkiai įgyvendinama ir suteikia patikimą apsaugą. Vienas jos trūkumas yra, kad serverinėje dalyje labai nepatogu kurti atsijungimo funkcijos, nes norint tai padaryti tenka vienaip ar kitaip saugoti JWT serveryje.
+3. Prieš pradedant kurti vartotojo sąsają reikia gerai įvertinti, kokias komponentų bibliotekas naudoti ir ar jos suderinamos tarpusavyje.
